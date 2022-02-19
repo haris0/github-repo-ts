@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import { SearchGithubAccount } from 'services/queries';
-import { ISearchRes } from 'types';
+import { ISearchRes } from 'types/Search.type';
 
 type props = {
   keyword: string

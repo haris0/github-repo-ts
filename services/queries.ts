@@ -32,3 +32,45 @@ export const SearchGithubAccount = `
     }
   }
 `;
+
+export const UserRepositories = `
+  query UserRepositories(
+    $login: String!
+    $first: Int
+    $isFork: Boolean
+    $after: String
+    $before: String
+    $orderBy: RepositoryOrder
+  ){
+    user(login: $login) {
+      login
+      name
+      email
+      location
+      repositories(
+        first: $first
+        isFork: $isFork
+        after: $after
+        before: $before
+        orderBy : $orderBy
+      ) {
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+        totalCount
+        nodes {
+          name
+          url
+          descriptionHTML
+          updatedAt
+          primaryLanguage {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
