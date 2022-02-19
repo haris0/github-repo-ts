@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import Link from 'next/link';
 import { SearchGithubAccount } from 'services/queries';
 import { ISearchRes } from 'types/Search.type';
 
@@ -23,9 +24,13 @@ const SearchResult = ({ keyword }: props) => {
     <div>
       {data && !loading && !error && (
         data?.search.nodes.map((user) => (
-          <div key={user.login}>
-            {user.login}
-          </div>
+          <Link href={`/user/${user.login}`} passHref key={user.login}>
+            <a href={`/user/${user.login}`}>
+              <div>
+                {user.login}
+              </div>
+            </a>
+          </Link>
         ))
       )}
     </div>
