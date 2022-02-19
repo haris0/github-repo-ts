@@ -16,10 +16,6 @@ const SearchResult = ({ keyword }: props) => {
     },
   });
 
-  if (data && !loading && !error) {
-    console.log(data);
-  }
-
   return (
     <div>
       {data && !loading && !error && (

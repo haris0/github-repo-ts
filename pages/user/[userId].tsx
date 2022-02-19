@@ -38,12 +38,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
-  console.log(userDetail);
   const repositories = userDetail.user.repositories.nodes;
   return (
     <div>
       User Page {userDetail.user.login} repositories:
-      <div style={{ marginTop: '1rem' }}>
+      <div style={{ marginTop: '.5rem' }}>
         {!!repositories.length && (
           repositories.map((repository) => (
             <div key={repository.name}>
