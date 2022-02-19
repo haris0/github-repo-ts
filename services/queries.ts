@@ -20,6 +20,9 @@ export const SearchGithubAccount = `
           name
           login
           location
+          repositories (isFork: false) {
+            totalCount
+          }
         }
       }
       pageInfo {
