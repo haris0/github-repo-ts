@@ -6,7 +6,7 @@ export interface Node {
   id: number;
   name: string;
   url: string;
-  descriptionHTML: string;
+  description: string;
   updatedAt: Date;
   primaryLanguage: PrimaryLanguage | null;
 }

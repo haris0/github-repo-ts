@@ -6,6 +6,7 @@ import client from 'services/apollo-client';
 import { UserRepositories } from 'services/queries';
 import { IUserDetailRes } from 'types/User.type';
 import styles from 'styles/User.module.scss';
+import ReposCard from 'components/ReposCard/ReposCard';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [{
@@ -23,7 +24,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query: gql(UserRepositories),
     variables: {
       login: userId,
-      first: 20,
+      first: 15,
       isFork: false,
       orderBy: {
         field: 'UPDATED_AT',
@@ -78,11 +79,14 @@ const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
             </h4>
             <div style={{ marginTop: '.5rem' }}>
               {!!repositories.length && (
-                repositories.map((repository) => (
-                  <div key={repository.name}>
-                    {repository.name}
-                  </div>
-                ))
+                <div className={styles.repo_list}>
+                  {repositories.map((repository) => (
+                    <ReposCard
+                      key={repository.id}
+                      repository={repository}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           </div>

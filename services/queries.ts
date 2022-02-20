@@ -72,7 +72,7 @@ export const UserRepositories = `
           id
           name
           url
-          descriptionHTML
+          description
           updatedAt
           primaryLanguage {
             name

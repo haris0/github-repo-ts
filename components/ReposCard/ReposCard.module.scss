@@ -1,0 +1,35 @@
+@import '../../styles/colors';
+
+.card_dark {
+  background-color: $bg-dark;
+  color: $text-dark;
+}
+
+.card_custom {
+  border-radius: 20px;
+}
+
+.card_body {
+  padding: 1.3rem;
+}
+
+.repository {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  .data {
+    display: grid;
+    gap: .7rem;
+
+    .language {
+      font-size: 14px;
+      opacity: .7;
+    }
+  }
+
+  .link {
+    flex-shrink: 0 !important;
+  }
+}

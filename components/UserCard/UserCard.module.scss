@@ -1,5 +1,14 @@
 @import '../../styles/colors';
 
+.card_dark {
+  background-color: $bg-dark;
+  color: $text-dark;
+}
+
+.card_custom {
+  border-radius: 20px;
+}
+
 .card_body {
   display: flex;
   gap: 1.3rem;
@@ -33,9 +42,4 @@
     font-size: 12px;
     opacity: .7;
   }
-}
-
-.card_dark {
-  background-color: $bg-dark;
-  color: $text-dark;
 }

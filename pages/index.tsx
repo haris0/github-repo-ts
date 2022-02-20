@@ -63,7 +63,7 @@ const Home: NextPage = () => {
           {!debouncedKey && (
             <div className={styles.no_search}>
               <Image
-                src="/images/github.png"
+                src={`/images/github_${theme}.png`}
                 width="170"
                 height="170"
               />
