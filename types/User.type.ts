@@ -25,10 +25,13 @@ export interface Repositories {
 }
 
 export interface User {
+  id: number;
+  avatarUrl: string;
   login: string;
   name: string;
   email: string;
   location: string;
+  bio: string;
   repositories: Repositories;
 }
 

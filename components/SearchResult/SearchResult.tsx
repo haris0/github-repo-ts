@@ -18,8 +18,6 @@ const SearchResult = ({ keyword }: props) => {
     },
   });
 
-  console.log(data);
-
   return (
     <div className={styles.search_result}>
       {loading && !data && (
@@ -32,10 +30,9 @@ const SearchResult = ({ keyword }: props) => {
       {data && !loading && !error && (
         <div className={styles.user_list}>
           {data?.search.nodes.map((user) => (
-            <div>
+            <div key={user.id}>
               {user.id && (
                 <UserCard
-                  key={user.id}
                   user={user}
                 />
               )}

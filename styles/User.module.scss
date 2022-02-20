@@ -1,0 +1,46 @@
+.user_profile {
+  display: grid;
+  gap: 2rem;
+  .user_data {
+    display: grid;
+    justify-content: center;
+    gap: .5rem;
+
+    .avatar_wrap {
+      display: flex;
+      justify-content:center;
+
+      .avatar {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 10rem;
+        overflow: hidden;
+        position: relative;
+      }
+    }
+
+    .name {
+      margin-top: 1rem;
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+
+      .user_id {
+        opacity: .7;
+      }
+    }
+
+    .bio {
+      text-align: center;
+    }
+
+    .location {
+      text-align: center;
+      opacity: .5;
+    }
+  }
+
+  .user_repos {
+
+  }
+}

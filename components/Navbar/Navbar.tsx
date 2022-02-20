@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSwitchTheme, useTheme } from 'context/ThemeContext';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   Container,
   Navbar,
@@ -24,10 +24,10 @@ const NavigationBar = () => {
         <Nav>
           <button type="button" onClick={switchTheme} className={styles.theme_button}>
             {theme === 'dark' && (
-              <Image alt="Light" src="/images/Sun.png" height="25px" width="25px" />
+              <img alt="Light" src="/images/Sun.png" height="25px" width="25" />
             )}
             {theme === 'light' && (
-              <Image alt="Dark" src="/images/Moon.png" height="20px" width="20px" />
+              <img alt="Dark" src="/images/Moon.png" height="20px" width="20" />
             )}
           </button>
         </Nav>

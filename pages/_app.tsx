@@ -14,7 +14,6 @@ type props = {
 
 const ThemeController = ({ children }: props) => {
   const theme = useTheme();
-  console.log(theme);
 
   return (
     <div className={`app-${theme}`}>

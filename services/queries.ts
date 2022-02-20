@@ -47,10 +47,13 @@ export const UserRepositories = `
     $orderBy: RepositoryOrder
   ){
     user(login: $login) {
+      id
+      avatarUrl
       login
       name
       email
       location
+      bio
       repositories(
         first: $first
         isFork: $isFork
