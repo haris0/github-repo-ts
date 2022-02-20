@@ -1,1 +1,33 @@
-.main {}
+@import 'colors';
+
+.search_panel {
+  padding-bottom: 1.5rem;
+
+  .search_input {
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    font-size: 1.1em;
+    border: 1px solid rgba(0,0,0,.125) !important;
+    color: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 15px;
+    padding: 10px 50px 10px 20px;
+  }
+  
+  .search_dark {
+    background-color: $bg-dark;
+    color: $text-dark;
+  }
+  
+  .search_input:focus {
+    outline: none
+  }
+}
+
+.results_panel {
+  .no_search {
+    padding: 5rem 0;
+    text-align: center;
+  }
+}

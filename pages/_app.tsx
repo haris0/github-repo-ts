@@ -6,6 +6,7 @@ import ThemeContextProvider, { useTheme } from 'context/ThemeContext';
 import { ReactNode } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from 'components/Navbar/Navbar';
+import Head from 'next/head';
 
 type props = {
   children: ReactNode;
@@ -26,6 +27,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   <ApolloProvider client={client}>
     <ThemeContextProvider>
       <ThemeController>
+        <Head>
+          <title>Github Repo</title>
+          <meta name="description" content="Show repository list from a github account" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <NavigationBar />
         <Component {...pageProps} />
       </ThemeController>
