@@ -1,0 +1,20 @@
+@import '../../styles/colors'; 
+
+.navbar {
+  background-color: $primary-bg;
+}
+
+.nav_brand {
+  color: $text-dark !important;
+}
+
+.theme_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 2.5rem;
+  border: none;
+  background-color:rgba(0,0,0,.125);
+}

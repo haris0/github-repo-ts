@@ -5,6 +5,7 @@ import client from 'services/apollo-client';
 import ThemeContextProvider, { useTheme } from 'context/ThemeContext';
 import { ReactNode } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from 'components/Navbar/Navbar';
 
 type props = {
   children: ReactNode;
@@ -25,6 +26,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   <ApolloProvider client={client}>
     <ThemeContextProvider>
       <ThemeController>
+        <NavigationBar />
         <Component {...pageProps} />
       </ThemeController>
     </ThemeContextProvider>
