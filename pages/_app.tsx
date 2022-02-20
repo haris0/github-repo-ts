@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import client from 'services/apollo-client';
 import ThemeContextProvider, { useTheme } from 'context/ThemeContext';
 import { ReactNode } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type props = {
   children: ReactNode;
