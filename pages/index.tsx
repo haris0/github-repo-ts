@@ -1,5 +1,5 @@
 import ClientOnly from 'components/ClientOnly';
-import SearchResult from 'components/SearchResult';
+import SearchResult from 'components/SearchResult/SearchResult';
 import { useTheme } from 'context/ThemeContext';
 import { useDebouncedEffect } from 'mixin';
 import type { NextPage } from 'next';
