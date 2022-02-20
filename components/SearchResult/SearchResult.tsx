@@ -1,8 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
-import Link from 'next/link';
+import UserCard from 'components/UserCard/UserCard';
 import { Spinner } from 'react-bootstrap';
 import { SearchGithubAccount } from 'services/queries';
 import { ISearchRes } from 'types/Search.type';
+import styles from './SearchResult.module.scss';
 
 type props = {
   keyword: string
@@ -17,25 +18,30 @@ const SearchResult = ({ keyword }: props) => {
     },
   });
 
+  console.log(data);
+
   return (
-    <div>
+    <div className={styles.search_result}>
       {loading && !data && (
-        <div style={{ textAlign: 'center' }}>
+        <div className={styles.loading}>
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner>
         </div>
       )}
       {data && !loading && !error && (
-        data?.search.nodes.map((user) => (
-          <Link href={`/user/${user.login}`} passHref key={user.login}>
-            <a href={`/user/${user.login}`}>
-              <div>
-                {user.login}
-              </div>
-            </a>
-          </Link>
-        ))
+        <div className={styles.user_list}>
+          {data?.search.nodes.map((user) => (
+            <div>
+              {user.id && (
+                <UserCard
+                  key={user.id}
+                  user={user}
+                />
+              )}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

@@ -15,6 +15,7 @@ export const SearchGithubAccount = `
     ) {
       nodes {
         ... on User {
+          id
           avatarUrl
           bio
           name
@@ -65,6 +66,7 @@ export const UserRepositories = `
         }
         totalCount
         nodes {
+          id
           name
           url
           descriptionHTML

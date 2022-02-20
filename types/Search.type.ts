@@ -1,9 +1,14 @@
+export interface Repositories {
+  totalCount: number;
+}
 export interface Node {
+  id: number;
   avatarUrl: string;
   bio?: string;
   name?: string;
   login: string;
   location?: string;
+  repositories: Repositories;
 }
 
 export interface PageInfo {

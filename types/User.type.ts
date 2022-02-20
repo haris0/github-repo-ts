@@ -3,6 +3,7 @@ export interface PrimaryLanguage {
 }
 
 export interface Node {
+  id: number;
   name: string;
   url: string;
   descriptionHTML: string;

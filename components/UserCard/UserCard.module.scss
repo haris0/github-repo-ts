@@ -1,0 +1,41 @@
+@import '../../styles/colors';
+
+.card_body {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.avatar {
+  flex-shrink: 0 !important;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.user_data {
+  display: grid;
+  gap: 0.5rem;
+
+  .name {
+    display: flex;
+    gap: .5rem;
+
+    .user_name{
+      color: #58a6ff;
+    }
+  }
+
+  .loc_email {
+    display: flex;
+    gap: .5rem;
+    font-size: 12px;
+    opacity: .7;
+  }
+}
+
+.card_dark {
+  background-color: $bg-dark;
+  color: $text-dark;
+}
