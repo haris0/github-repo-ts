@@ -1,6 +1,6 @@
 # GithubRepo
 
-This app can search github user, and show repositories of a user. This app using [GraphQL API](https://docs.github.com/en/graphql) from github. You can check the deployed app on [Github-Repo](http://github-repo.vercel.app/).
+This app can search github user, and show repositories of a user. This app using [GraphQL API](https://docs.github.com/en/graphql) from github. You can check the deployed app on [Github-Repo](http://github-repo-ts.vercel.app/).
 
 ## Build Setup
 In the project directory, you can run:
