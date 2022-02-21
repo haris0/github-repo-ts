@@ -1,6 +1,9 @@
+@import 'colors';
+
 .user_profile {
   display: grid;
   gap: 2rem;
+
   .user_data {
     display: grid;
     justify-content: center;
@@ -45,6 +48,41 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));  
       gap: 1em;
+    }
+  }
+
+  .nav_button {
+    display: flex;
+    justify-content: center;
+
+    button:disabled {
+      opacity: 0.5;
+    }
+
+    .prev {
+      border: 1px solid rgba(0,0,0,.125);
+      width: 5rem;
+      height: 2rem;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+    }
+
+    .next {
+      border: 1px solid rgba(0,0,0,.125);
+      width: 5rem;
+      height: 2rem;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    .button_light {
+      background-color: $bg-light;
+      color: $text-light;
+    }
+
+    .button_dark {
+      background-color: $bg-dark;
+      color: $text-dark;
     }
   }
 }

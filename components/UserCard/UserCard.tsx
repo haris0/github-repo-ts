@@ -44,7 +44,6 @@ const UserCard = ({ user }: props) => {
             {user.bio}
           </div>
           <div className={styles.loc_email}>
-            <span>{user.repositories.totalCount} Repositories</span>
             <span>{user.location}</span>
           </div>
         </div>

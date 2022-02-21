@@ -7,6 +7,8 @@ import { UserRepositories } from 'services/queries';
 import { IUserDetailRes } from 'types/User.type';
 import styles from 'styles/User.module.scss';
 import ReposCard from 'components/ReposCard/ReposCard';
+import { useTheme } from 'context/ThemeContext';
+import { useState } from 'react';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [{
@@ -41,8 +43,47 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
-  const { user } = userDetail;
-  const repositories = userDetail.user.repositories.nodes;
+  const theme = useTheme();
+  const [userData, setUserData] = useState(userDetail);
+
+  const handlePrev = async (userId: string, firstCursor: string) => {
+    const { data } = await client.query<IUserDetailRes>({
+      query: gql(UserRepositories),
+      variables: {
+        login: userId,
+        last: 15,
+        isFork: false,
+        before: firstCursor,
+        orderBy: {
+          field: 'UPDATED_AT',
+          direction: 'DESC',
+        },
+      },
+    });
+
+    setUserData(data);
+    window.scrollTo(0, 0);
+  };
+
+  const handleNext = async (userId: string, lastCursor: string) => {
+    const { data } = await client.query<IUserDetailRes>({
+      query: gql(UserRepositories),
+      variables: {
+        login: userId,
+        first: 15,
+        isFork: false,
+        after: lastCursor,
+        orderBy: {
+          field: 'UPDATED_AT',
+          direction: 'DESC',
+        },
+      },
+    });
+
+    setUserData(data);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <main>
       <Container className="container-custom">
@@ -51,26 +92,26 @@ const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
             <div className={styles.avatar_wrap}>
               <div className={styles.avatar}>
                 <Image
-                  src={user.avatarUrl}
+                  src={userData.user.avatarUrl}
                   placeholder="blur"
-                  blurDataURL={user.avatarUrl}
-                  alt={user.login}
+                  blurDataURL={userData.user.avatarUrl}
+                  alt={userData.user.login}
                   layout="fill"
                   objectFit="cover"
                 />
               </div>
             </div>
             <div className={styles.name}>
-              {user?.name && (
-                <b className={styles.user_name}>{user?.name}</b>
+              {userData.user?.name && (
+                <b className={styles.user_name}>{userData.user?.name}</b>
               )}
-              <span className={styles.user_id}>{user.login}</span>
+              <span className={styles.user_id}>{userData.user.login}</span>
             </div>
             <div className={styles.bio}>
-              {user.bio}
+              {userData.user.bio}
             </div>
             <div className={styles.location}>
-              {user.location}
+              {userData.user.location}
             </div>
           </div>
           <div className={styles.user_repos}>
@@ -78,9 +119,9 @@ const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
               Repositories:
             </h4>
             <div style={{ marginTop: '.5rem' }}>
-              {!!repositories.length && (
+              {!!userData.user.repositories.nodes.length && (
                 <div className={styles.repo_list}>
-                  {repositories.map((repository) => (
+                  {userData.user.repositories.nodes.map((repository) => (
                     <ReposCard
                       key={repository.id}
                       repository={repository}
@@ -89,6 +130,30 @@ const UserDetail: NextPage<{userDetail: IUserDetailRes}> = ({ userDetail }) => {
                 </div>
               )}
             </div>
+          </div>
+          <div className={styles.nav_button}>
+            <button
+              type="button"
+              onClick={() => handlePrev(
+                userData.user.login,
+                userData.user.repositories.pageInfo.startCursor,
+              )}
+              disabled={!userData.user.repositories.pageInfo.hasPreviousPage}
+              className={`${styles.prev} ${styles[`button_${theme}`]}`}
+            >
+              Prev
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNext(
+                userData.user.login,
+                userData.user.repositories.pageInfo.endCursor,
+              )}
+              disabled={!userData.user.repositories.pageInfo.hasNextPage}
+              className={`${styles.next} ${styles[`button_${theme}`]}`}
+            >
+              Next
+            </button>
           </div>
         </div>
       </Container>

@@ -41,6 +41,7 @@ export const UserRepositories = `
   query UserRepositories(
     $login: String!
     $first: Int
+    $last: Int
     $isFork: Boolean
     $after: String
     $before: String
@@ -56,6 +57,7 @@ export const UserRepositories = `
       bio
       repositories(
         first: $first
+        last: $last
         isFork: $isFork
         after: $after
         before: $before
